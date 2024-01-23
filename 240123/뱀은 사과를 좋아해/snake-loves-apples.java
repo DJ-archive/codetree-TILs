@@ -58,11 +58,6 @@ public class Main {
                     break loop;
                 }
 
-                // 움직이는 도중 몸이 꼬여 서로 겹쳐졌을 경우 종료
-                if (board[nx][ny] == SNAKE) {
-                    break loop;
-                }
-
                 if (board[nx][ny] == APPLE) {
                     snake.offerFirst(new int[]{nx,ny});
                     board[nx][ny] = SNAKE;
@@ -71,6 +66,11 @@ public class Main {
                     board[nx][ny] = SNAKE;
                     int[] last = snake.pollLast();
                     board[last[0]][last[1]] = BLANK;
+                }
+
+                // 움직이는 도중 몸이 꼬여 서로 겹쳐졌을 경우 종료
+                if (board[nx][ny] == SNAKE) {
+                    break loop;
                 }
                 // 위치 바꿔주는거 잊지 말기!
                 curX = nx;
