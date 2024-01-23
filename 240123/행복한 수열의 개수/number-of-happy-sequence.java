@@ -51,6 +51,7 @@ public class Main {
     private static boolean valid() {
         int count = 1;
         int target = tmp[0];
+        int maxCount = 1;
         for (int i = 1; i < n; i++) {
             if (tmp[i] == target) {
                 count++;
@@ -58,11 +59,13 @@ public class Main {
                 count = 1;
                 target = tmp[i];
             }
-            if (count >= m) {
-                return true;
+            // 아래에서 m이상인 것을 확인 후 바로 return해버리면, n이 1인 격자의 경우 확인 불가능 
+            if (count >= maxCount) {
+                maxCount = count;
             }
         }
-        return false;
+        if (maxCount >= m) return true;
+        else return false;
     }
 
 }
