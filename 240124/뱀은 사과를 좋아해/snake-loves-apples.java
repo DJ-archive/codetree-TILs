@@ -39,7 +39,7 @@ public class Main {
         int curY = 0;
         snake.offer(new int[]{curX, curY});
         board[curX][curY] = SNAKE;
-
+        
         loop: // 뱀이 전부 움직이면 종료
         for (int i = 0; i < K; i++) {
             // 뱀 이동
@@ -54,10 +54,10 @@ public class Main {
 
                 // 격자를 벗어날 경우 종료
                 if (!inRange(nx, ny)) {
-                    time++;
                     break loop;
                 }
-                // 움직이는 도중 몸이 꼬여 서로 겹쳐졌을 경우 종료 
+                
+                // 움직이는 도중 몸이 꼬여 서로 겹쳐졌을 경우 종료
                 // ** 꼬리일 경우에는 제외해야함!!
                 if (board[nx][ny] == SNAKE && !isTail(nx, ny)) {
                     break loop;
@@ -69,7 +69,7 @@ public class Main {
                 } else if (board[nx][ny] == BLANK){
                     int[] last = snake.pollLast();
                     board[last[0]][last[1]] = BLANK;
-                    
+
                     snake.offerFirst(new int[]{nx,ny});
                     board[nx][ny] = SNAKE;
                 }
