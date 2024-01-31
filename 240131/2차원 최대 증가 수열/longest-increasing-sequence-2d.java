@@ -25,7 +25,7 @@ public class Main {
         }
 
         
-        dp[0][0] = 0;
+        dp[0][0] = 1;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (dp[i][j] == -1) continue;
@@ -48,7 +48,7 @@ public class Main {
             }
         }
 
-        System.out.println(max+1);
+        System.out.println(max);
 
 
     }
