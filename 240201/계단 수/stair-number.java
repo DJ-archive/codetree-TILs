@@ -31,10 +31,6 @@ public class Main {
             }
         }
 
-        for (int i = 0; i < n; i++) {
-            System.out.println(Arrays.toString(dp[i]));
-        }
-
         // long 주의!
         long sum = 0;
         for (int i = 0; i < 10; i++) {
