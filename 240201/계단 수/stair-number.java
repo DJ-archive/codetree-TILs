@@ -16,15 +16,17 @@ public class Main {
 
         for (int i = 1; i < n; i++) {
             for (int j = 0; j < 10; j++) {
+                int cnt = 0;
                 if (j >= 1 && dp[i - 1][j - 1] != -1) {
-                    dp[i][j] += dp[i - 1][j - 1];
+                    cnt++;
                 }
                 if (j <= 8 && dp[i - 1][j + 1] != -1) {
-                    dp[i][j] += dp[i - 1][j + 1];
+                    cnt++;
                 }
+                dp[i][j] = cnt * dp[i - 1][j];
             }
         }
-
+        
 
         int sum = 0;
         for (int i = 0; i < 10; i++) {
