@@ -7,11 +7,12 @@ import java.util.StringTokenizer;
 public class Main {
 
     static Pair[] lines;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
         int N = Integer.parseInt(br.readLine());
-        lines = new Pair[N+1];
+        lines = new Pair[N + 1];
         for (int i = 1; i <= N; i++) {
             st = new StringTokenizer(br.readLine());
             int x = Integer.parseInt(st.nextToken());
@@ -22,14 +23,16 @@ public class Main {
         lines[0] = new Pair(0, 0);
         Arrays.sort(lines);
 
-        int[] dp = new int[N+1];
+        int[] dp = new int[N + 1];
+        Arrays.fill(dp, -1);
         dp[1] = 1;
         for (int i = 2; i <= N; i++) {
             dp[i] = 1;
             for (int j = 1; j < i; j++) {
-                if (lines[i].x > lines[j].y) {
-                    dp[i] = Math.max(dp[i], dp[i-1]+1);
+                if (lines[i].x <= lines[j].y || dp[j] == -1) {
+                    continue;
                 }
+                dp[i] = Math.max(dp[i], dp[j] + 1); // *** j!!
             }
         }
 
@@ -43,7 +46,8 @@ public class Main {
         System.out.println(max);
     }
 
-    private static class Pair implements Comparable<Pair>{
+    private static class Pair implements Comparable<Pair> {
+
         int x;
         int y;
 
