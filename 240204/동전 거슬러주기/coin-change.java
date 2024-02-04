@@ -18,7 +18,7 @@ public class Main {
             coins[i] = Integer.parseInt(st.nextToken());
         }
 
-        int[] dp = new int[M+1];
+        long[] dp = new long[M+1];
         // dp[i] = 동전의 합이 i일 때 가능한 동전 최소 갯수
         Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = 0;
@@ -34,7 +34,7 @@ public class Main {
             }
         }
 
-        int ans = dp[M] == Integer.MAX_VALUE ? -1 : dp[M];
+        long ans = dp[M] == Integer.MAX_VALUE ? -1 : dp[M];
 
         System.out.println(ans);
     }
