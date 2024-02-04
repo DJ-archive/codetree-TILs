@@ -26,7 +26,7 @@ public class Main {
         for (int i = 1; i <= M; i++) {
             for (int j = 0; j < N; j++) {
                 if (i - coins[j] >= 0) {
-                    if (dp[j] == Integer.MAX_VALUE) { // ***
+                    if (dp[i-coins[j]] == Integer.MAX_VALUE) { // ***
                         continue;
                     }
                     dp[i] = Math.min(dp[i], dp[i-coins[j]] + 1); // ***
@@ -34,7 +34,8 @@ public class Main {
             }
         }
 
-        long ans = dp[M] == Integer.MAX_VALUE ? -1 : dp[M];
+
+        long ans = (dp[M] == Integer.MAX_VALUE) ? -1 : dp[M];
 
         System.out.println(ans);
     }
