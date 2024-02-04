@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 
 public class Main {
 
+    static final int MOD = 10007;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
@@ -17,6 +18,7 @@ public class Main {
                     dp[i] += dp[i-num[j]];
                 }
             }
+            dp[i] %= MOD;
         }
         System.out.println(dp[n]);
     }
