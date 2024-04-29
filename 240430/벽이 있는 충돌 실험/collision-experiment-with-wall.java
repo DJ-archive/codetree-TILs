@@ -39,7 +39,7 @@ public class Main {
             }
 
             // 시뮬레이션 
-            int cnt = 2 * N; // ** while 안에서 바로 (2*N-->0)을 하니까 N자체가 줄어들어 틀렸었다..!
+            int cnt = 2 * N;
             while(cnt-->0) {
                 simulation();
             }
@@ -93,16 +93,21 @@ public class Main {
         int nx = x + dx[d];
         int ny = y + dy[d];
 
-        if(nx>=0 && nx<N && ny>=0 && ny<N) { // 충돌하지 않을 경우 
+        // ** 벽에 닿을 경우, 닿지 않았을 경우 모두 구슬충돌여부 확인해야 함. 
+        if(nx>=0 && nx<N && ny>=0 && ny<N) { // 벽에 닿지 않을 경우 
             if(nxtDir[nx][ny]!=BLANK) { // 이미 다른 구슬이 이동해있는지 확인
                 nxtDir[nx][ny] = COLLIDE;
             } else {
                 nxtDir[nx][ny] = d;
             }
-        } else { // 충돌할 경우 같은 위치에 방향 전환하여 기록
-            int nd = 3-d;
-            nxtDir[x][y] = nd;
+        } else { // 벽에 닿을 경우 
+            if(nxtDir[x][y]!=BLANK) { // 이미 다른 구슬이 이동해있는지 확인
+                nxtDir[x][y] = COLLIDE;
+            } else {
+                nxtDir[x][y] = 3-d;
+            }
         }
+
 
     }
 }
