@@ -108,7 +108,6 @@ public class Main {
                 answer += board[i][j].size();
             }
         }
-
         System.out.println(answer);
     }
 
@@ -131,7 +130,7 @@ public class Main {
                 curY = ny;
             }
         }
-
+        b.d = curD;
         // 최종적인 위치를 nxt에 기록
         nxt[curX][curY].add(b);
 
